@@ -46,8 +46,8 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active Test">
-                       <input/>
-                        <input type="button" value="Search">
+                       <input id="search" type="text"/>
+                        <input type="button" id="search_btn"  onclick="searchProduct()" >
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="index.html">Home
@@ -104,7 +104,7 @@
                     <a href="products.html">view all products <i class="fa fa-angle-right"></i></a>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div id="product" class="col-md-4">
 <!--                <div class="product-item">-->
 <!--                    <a href="#"><img src="assets/images/product_01.jpg" alt=""></a>-->
 <!--                    <div class="down-content">-->
@@ -212,9 +212,10 @@
             </div>
         </div>
     </div>
-    <input type="hidden" id="page" value="0">
+
 
 </footer>
+<div id="Test"> Testtttttttttttttttttttt</div>
 
 
 <!-- Bootstrap core JavaScript -->
@@ -243,28 +244,26 @@
 
 <script>
     $(document).ready(function () {
-      let Test =  window.sessionStorage.getItem('TOKEN_KEY')
-        console.log(Test)
-        let page = $('#page').val();
-      console.log(page)
+      let Test =  window.sessionStorage.getItem('ROLE_KEY')
+        let a = document.getElementById('Test')
+        if(Test == 'ROLE_USER'){
+            a.innerHTML = '';
+
+        }
 
             $.ajax({
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                    'Authorization': window.sessionStorage.getItem('TOKEN_KEY')
-                },
+                // headers: {
+                //     'Accept': 'application/json',
+                //     'Content-Type': 'application/json',
+                //     'Authorization': window.sessionStorage.getItem('TOKEN_KEY')
+                // },
               //  data: JSON.stringify(page),
                 type: "GET",
-                url: 'http://localhost:8080/user/showProduct',
+                url: 'http://localhost:8080/rest/showProduct',
                 success: function (data) {
-                    console.log(data.length)
-                 let List =   document.getElementsByClassName('')
-                    console.log(List)
-                    // document.getElementById("page").value = page+1;
-                    for(let i=0;i<4;i++) {
-                       let a= document.getElementsByClassName("col-md-4")[i]
-                         a.innerHTML +=
+                    for (let i = 0; i < data.length; i++) {
+                        let a = document.getElementsByClassName("col-md-4")[i]
+                        a.innerHTML +=
 
                             ` <div class="product-item">
 
@@ -286,47 +285,10 @@
 
 
                   `
-
-
-
-                            // '<tr class="table-success">' +
-                            // '<th >Producer</th>' +
-                            // '<th >Model</th>' +
-                            // '<th>Price</th>' +
-                            // '<th>Edit</th>' +
-                            // '<th>Delete</th>' +
-                            // '</tr>' +
-                            // '<tr>' +
-                            // '<td class="table-danger">' +'<p>'+item.producer+'</p>'+ '</td>'+
-                            // '<td class="table-warning">' +'<p>'+item.model+'</p>'+ '</td>'+
-                            // '<td class="table-light">' +'<p>'+item.price+'</p>'+ '</td>'+
-                            // '<td><button class="btn btn-primary" onclick="editSmartPhone('+item.id+')">Edit</button> </td>'+
-                            // '<td><button class="btn btn-danger" onclick="deleteSmartPhone('+item.id+')">Delete</button> </td>'+
-                            // '</tr>'
-
-
                     }
-                    // for (let i=0;i<data.length;i++) {
-                    //
-                    // } <a href="#"><img src="assets/images/product_01.jpg" alt=""></a>
-                    // <div class="down-content">
-                    //     <a href="#"><h4>Tittle goes here</h4></a>
-                    //     <h6>$25.75</h6>
-                    //     <p>Lorem ipsume dolor sit amet, adipisicing elite. Itaque, corporis nulla aspernatur.</p>
-                    //     <ul class="stars">
-                    //         <li><i class="fa fa-star"></i></li>
-                    //         <li><i class="fa fa-star"></i></li>
-                    //         <li><i class="fa fa-star"></i></li>
-                    //         <li><i class="fa fa-star"></i></li>
-                    //         <li><i class="fa fa-star"></i></li>
-                    //     </ul>
-                    //     <span>Reviews (24)</span>
-                    // </div>
+                }
 
 
-
-
-                    }
 
 
 
@@ -337,37 +299,45 @@
 
     })
 
+    function searchProduct(e){
+        let search = $("#search").val()
+        console.log(search)
+        $.ajax({
+            type: "GET",
+            url: 'http://localhost:8080/rest/findAllByName?name='+search,
+            success: function (data) {
+                console.log(data)
+                for (let i = 0; i < data.length; i++) {
+                    let a = document.getElementsByClassName("col-md-4")[i]
+                    a.innerHTML +=
+
+                        ` <div class="product-item">
+
+                         <a href="#"><img src="assets/images/product_01.jpg" alt=""></a>
+                    <div class="down-content">
+                        <a href="#"><h4>${data[i].name}</h4></a>
+                        <h6>${data[i].quantity}</h6>
+                        <p>${data[i].description}</p>
+                        <ul class="stars">
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                        </ul>
+                        <span>Reviews (24)</span>
+                    </div>
+                    </div>
+
+
+                  `
+
+                }
+                document.getElementById('product').innerHTML = a;
+            }
+        })}
+
 </script>
-<!--<div class="latest-products">-->
-<!--    <div class="container">-->
-<!--        <div class="row">-->
-<!--            <div class="col-md-12">-->
-<!--                <div class="section-heading">-->
-<!--                    <h2>Latest Products</h2>-->
-<!--                    <a href="products.html">view all products <i class="fa fa-angle-right"></i></a>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="col-md-4">-->
-<!--                <div class="product-item">-->
-<!--                    <a href="#"><img src="assets/images/product_01.jpg" alt=""></a>-->
-<!--                    <div class="down-content">-->
-<!--                        <a href="#"><h4>Tittle goes here</h4></a>-->
-<!--                        <h6>$25.75</h6>-->
-<!--                        <p>Lorem ipsume dolor sit amet, adipisicing elite. Itaque, corporis nulla aspernatur.</p>-->
-<!--                        <ul class="stars">-->
-<!--                            <li><i class="fa fa-star"></i></li>-->
-<!--                            <li><i class="fa fa-star"></i></li>-->
-<!--                            <li><i class="fa fa-star"></i></li>-->
-<!--                            <li><i class="fa fa-star"></i></li>-->
-<!--                            <li><i class="fa fa-star"></i></li>-->
-<!--                        </ul>-->
-<!--                        <span>Reviews (24)</span>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
 
 
 </body>
