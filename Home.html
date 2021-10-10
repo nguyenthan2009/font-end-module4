@@ -47,7 +47,7 @@
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active Test">
                        <input id="search" type="text"/>
-                        <input type="button" id="search_btn"  onclick="searchProduct()" >
+                        <input type="button" id="search_btn" value="Search"  onclick="searchProduct()" >
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="index.html">Home
@@ -55,7 +55,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="products.html">Our Products</a>
+                        <a class="nav-link" href="createProduct.html">Tạo sản phẩm</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="about.html">About Us</a>
@@ -101,10 +101,11 @@
             <div class="col-md-12">
                 <div class="section-heading">
                     <h2>Latest Products</h2>
-                    <a href="products.html">view all products <i class="fa fa-angle-right"></i></a>
+                    <a href="Home.html">view all products <i class="fa fa-angle-right"></i></a>
                 </div>
             </div>
-            <div id="product" class="col-md-4">
+            <div id="product"></div>
+            <div id="Test1"  class="col-md-4">
 <!--                <div class="product-item">-->
 <!--                    <a href="#"><img src="assets/images/product_01.jpg" alt=""></a>-->
 <!--                    <div class="down-content">-->
@@ -261,15 +262,16 @@
                 type: "GET",
                 url: 'http://localhost:8080/rest/showProduct',
                 success: function (data) {
+                    let content = ''
                     for (let i = 0; i < data.length; i++) {
-                        let a = document.getElementsByClassName("col-md-4")[i]
-                        a.innerHTML +=
+                       let a = document.getElementsByClassName('col-md-4')[i]
+                        a.innerHTML =
+                            `
+                     <div class="product-item">
 
-                            ` <div class="product-item">
-
-                         <a href="#"><img src="assets/images/product_01.jpg" alt=""></a>
+                 <a href="#"><img src="assets/images/product_01.jpg" alt=""></a>
                     <div class="down-content">
-                        <a href="#"><h4>${data[i].name}</h4></a>
+                        <a href="productDetail.html" onclick="productDetail(${data[i].id})"><h4>${data[i].name}</h4></a>
                         <h6>${data[i].quantity}</h6>
                         <p>${data[i].description}</p>
                         <ul class="stars">
@@ -280,6 +282,7 @@
                             <li><i class="fa fa-star"></i></li>
                         </ul>
                         <span>Reviews (24)</span>
+                    </div>
                     </div>
                     </div>
 
@@ -300,6 +303,19 @@
     })
 
     function searchProduct(e){
+        document.getElementsByClassName('product-item')[0].innerHTML =''
+        document.getElementsByClassName('product-item')[1].innerHTML =''
+        document.getElementsByClassName('product-item')[2].innerHTML =''
+        // document.getElementsByClassName('product-item')[3].innerHTML =''
+        // document.getElementsByClassName('product-item')[4].innerHTML =''
+        // document.getElementsByClassName('product-item')[5].innerHTML =''
+        // document.getElementsByClassName('product-item')[6].innerHTML =''
+        // document.getElementsByClassName('product-item')[7].innerHTML =''
+        // document.getElementsByClassName('product-item')[8].innerHTML =''
+        // document.getElementsByClassName('product-item')[9].innerHTML =''
+        // document.getElementsByClassName('product-item')[10].innerHTML =''
+
+
         let search = $("#search").val()
         console.log(search)
         $.ajax({
@@ -307,11 +323,10 @@
             url: 'http://localhost:8080/rest/findAllByName?name='+search,
             success: function (data) {
                 console.log(data)
+                let content = ''
                 for (let i = 0; i < data.length; i++) {
-                    let a = document.getElementsByClassName("col-md-4")[i]
-                    a.innerHTML +=
-
-                        ` <div class="product-item">
+                    content += `
+                    <div class="product-item">
 
                          <a href="#"><img src="assets/images/product_01.jpg" alt=""></a>
                     <div class="down-content">
@@ -328,15 +343,19 @@
                         <span>Reviews (24)</span>
                     </div>
                     </div>
+                    `
 
-
-                  `
 
                 }
-                document.getElementById('product').innerHTML = a;
+                document.getElementById('product').innerHTML = content;
+
             }
         })}
 
+    function productDetail(id){
+        window.sessionStorage.setItem("product_id" , id)
+
+    }
 </script>
 
 

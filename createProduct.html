@@ -1,176 +1,229 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <style>
-    .form-control{
-      width: 400px;
-      box-shadow: 0px 8px 9px 0px rgba(69, 69, 69, 0.25);
-    }
-    .container{
-      padding-left: 300px;
-      padding-top: 100px;
-    }
-    h2{
-      padding-left: 50px;
-      color: chocolate;
-    }
-    .btn{
-      margin-left: 150px;
-      background-color: green;
-    }
-    .form-group{
-      color: chocolate;
-    }
-    .checkbox{
-      color: chocolate;
-    }
-  </style>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<!--  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>-->
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
+  <!------ Include the above in your HEAD tag ---------->
+<style>
+  body{
+    background: -webkit-linear-gradient(left, #0072ff, #00c6ff);
+  }
+  .contact-form{
+    background: #fff;
+    margin-top: 10%;
+    margin-bottom: 5%;
+    width: 70%;
+  }
+  .contact-form .form-control{
+    border-radius:1rem;
+  }
+  .contact-image{
+    text-align: center;
+  }
+  .contact-image img{
+    border-radius: 6rem;
+    width: 11%;
+    margin-top: -3%;
+    transform: rotate(29deg);
+  }
+  .contact-form form{
+    padding: 14%;
+  }
+  .contact-form form .row{
+    margin-bottom: -7%;
+  }
+  .contact-form h3{
+    margin-bottom: 8%;
+    margin-top: -10%;
+    text-align: center;
+    color: #0062cc;
+  }
+  .contact-form .btnContact {
+    width: 50%;
+    border: none;
+    border-radius: 1rem;
+    padding: 1.5%;
+    background: #dc3545;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+  }
+  .btnContactSubmit
+  {
+    width: 50%;
+    border-radius: 1rem;
+    padding: 1.5%;
+    color: #fff;
+    background-color: #0062cc;
+    border: none;
+    cursor: pointer;
+  }
+</style>
 </head>
-<script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script
-
-        src="https://code.jquery.com/jquery-3.4.1.min.js"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-        crossorigin="anonymous"></script>
-<script type="text/javascript"
-        src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.min.js"></script>
 <body>
-
-<div class="container">
-  <h2>Create Product</h2>
-  <form method="post" id="loginForm">
-    <div class="form-group">
-      <label for="name">Tên sản phẩm</label>
-      <input type="text" class="form-control" id="name" placeholder="Enter name" name="nameCoach">
+<div class="container contact-form">
+  <form method="post">
+    <input type="hidden" id="image1" />
+    <h3>Create Product</h3>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <input type="text" name="name" class="form-control" placeholder="Tên sản phẩm *" id="name" />
+        </div>
+        <div class="form-group">
+          <input type="text" name="price" class="form-control" placeholder="Giá sản phẩm *" id="price" />
+        </div>
+        <div class="form-group">
+          <input type="text" name="quantity" class="form-control" placeholder="Số lượng *" id="quantity" />
+        </div>
+        <div class="form-group">
+          <input type="text" name="category" class="form-control" placeholder="Thể loại *" id="category" />
+        </div>
+        <div class="form-group">
+          <input type="file" name="image"   id="image" />
+        </div>
+        <div class="form-group">
+          <input type="submit" name="btnSubmit" onclick="createProduct()" class="btnContact" value="Tạo sản phẩm" />
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <textarea name="description" class="form-control" id="description" placeholder="Mô tả sản phẩm" style="width: 100%; height: 150px;"></textarea>
+        </div>
+      </div>
     </div>
-    <div class="form-group">
-      <label for="price">Giá sản phẩm</label>
-      <input type="text" class="form-control" id="price" placeholder="Enter price" name="price">
-    </div>
-    <div class="form-group">
-      <label for="quantity">Số lượng</label>
-      <input type="text" class="form-control" id="quantity" placeholder="Enter quantity" name="quantity">
-    </div>
-    <div class="form-group">
-      <label for="category">Thể loại</label>
-      <input type="text" class="form-control" id="category" placeholder="Enter category" name="category">
-    </div>
-    <div class="form-group">
-      <label for="description">Mô tả</label>
-      <input type="text" class="form-control" id="description" placeholder="Enter description" name="description">
-    </div>
-    <div class="form-group">
-      <label for="image1">Ảnh sản phẩm</label>
-      <input type="file" class="form-control" id="image1">
-    </div>
-    <input type="hidden" class="form-control" id="image2"  name="image">
-
-    <button type="submit" class="btn btn-default">Submit</button>
   </form>
-  <script>
-    const firebaseConfig = {
-      apiKey: "AIzaSyDObAxKVnldv9c1ArB8htzZ07WZuk-tPso",
-      authDomain: "nguyenthan2009-6632e.firebaseapp.com",
-      projectId: "nguyenthan2009-6632e",
-      storageBucket: "nguyenthan2009-6632e.appspot.com",
-      messagingSenderId: "118204205848",
-      appId: "1:118204205848:web:c032e8e0b6701a90082c6d",
-      measurementId: "G-SVL6TCW94C"
-    };
-    firebase.initializeApp(firebaseConfig);
-  </script>
-  <script>
-    var fbBucketName = 'images';
-
-    var uploader = document.getElementById('uploader');
-    var fileButton = document.getElementById('fileButton');
-    var button = document.getElementById('create');
-
-    fileButton.addEventListener('change', function (e) {
-
-      console.log('file upload event', e);
-
-      var file = e.target.files[0];
-      var storageRef = firebase.storage().ref(`${fbBucketName}/${file.name}`);
-
-      // upload file
-      var uploadTask = storageRef.put(file);
-      uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, // or 'state_changed'
-              function (snapshot) {
-                switch (snapshot.state) {
-                  case firebase.storage.TaskState.PAUSED: // or 'paused'
-                    console.log('Upload is paused');
-                    break;
-                  case firebase.storage.TaskState.RUNNING: // or 'running'
-                    console.log('Upload is running');
-                    break;
-                }
-              }, function (error) {
-
-                switch (error.code) {
-                  case 'storage/unauthorized':
-                    break;
-
-                  case 'storage/canceled':
-                    break;
-
-                  case 'storage/unknown':
-                    break;
-                }
-              }, function () {
-                var downloadURL = uploadTask.snapshot.downloadURL;
-                let image =  document.getElementById("avatar") ;
-                image.value = downloadURL;
-
-                // image = downloadURL;
-                //    let divLocation = document.getElementById("test");
-                //   let imgElement = document.createElement("input").t;
-                //   imgElement.value = downloadURL
-                // //  console.log('pic ==', image)
-                //   divLocation.append(imgElement);
-                //   imgElement.disabled;
-              });
-
-    });
-    function taomoi(){
-      //lay du lieu
-      let name = $("#name").val();
-      let image = $("#avatar").val()
-
-      window.sessionStorage.setItem("a",name);
-      let newTest = {
-        name: name,
-        image: image
-      }
-      $.ajax({
-        headers:{
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-        type:"POST",
-        data:JSON.stringify(newTest),
-        url:'http://localhost:8080/home',
-        success: function (data){
-          //  showAllClass();
-        }
-      })
-      event.preventDefault();
-    }
-
-
-
-
-    </script>
-
 </div>
 
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyDObAxKVnldv9c1ArB8htzZ07WZuk-tPso",
+    authDomain: "nguyenthan2009-6632e.firebaseapp.com",
+    projectId: "nguyenthan2009-6632e",
+    storageBucket: "nguyenthan2009-6632e.appspot.com",
+    messagingSenderId: "118204205848",
+    appId: "1:118204205848:web:c032e8e0b6701a90082c6d",
+    measurementId: "G-SVL6TCW94C"
+  };
+  firebase.initializeApp(firebaseConfig);
+</script>
+<script>
+  let user_id = window.sessionStorage.getItem("ID_KEY")
+  console.log(user_id)
+  var image = document.getElementById('image');
+  var button = document.getElementById('create');
+
+  // listen for file selection
+  image.addEventListener('change', function (e) {
+    // what happened
+    console.log('file upload event', e);
+    var fbBucketName = 'images';
+
+    // get file
+    var file = e.target.files[0];
+
+    // create a storage ref
+    var storageRef = firebase.storage().ref(`${fbBucketName}/${file.name}`);
+
+    // upload file
+    var uploadTask = storageRef.put(file);
+
+    // The part below is largely copy-pasted from the 'Full Example' section from
+    // https://firebase.google.com/docs/storage/web/upload-files
+
+    // update progress bar
+    uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, // or 'state_changed'
+            function (snapshot) {
+              // // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+              // var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+              // uploader.value = progress;
+              // console.log('Upload is ' + progress + '% done');
+              switch (snapshot.state) {
+                case firebase.storage.TaskState.PAUSED: // or 'paused'
+                  console.log('Upload is paused');
+                  break;
+                case firebase.storage.TaskState.RUNNING: // or 'running'
+                  console.log('Upload is running');
+                  break;
+              }
+            }, function (error) {
+
+              // A full list of error codes is available at
+              // https://firebase.google.com/docs/storage/web/handle-errors
+              switch (error.code) {
+                case 'storage/unauthorized':
+                  // User doesn't have permission to access the object
+                  break;
+
+                case 'storage/canceled':
+                  // User canceled the upload
+                  break;
+
+                case 'storage/unknown':
+                  // Unknown error occurred, inspect error.serverResponse
+                  break;
+              }
+            }, function () {
+              // Upload completed successfully, now we can get the download URL
+              // save this link somewhere, e.g. put it in an input field
+              var downloadURL = uploadTask.snapshot.downloadURL;
+              let image1 =  document.getElementById("image1") ;
+              image1.value = downloadURL;
+              console.log(downloadURL)
+
+              // image = downloadURL;
+              //    let divLocation = document.getElementById("test");
+              //   let imgElement = document.createElement("input").t;
+              //   imgElement.value = downloadURL
+              // //  console.log('pic ==', image)
+              //   divLocation.append(imgElement);
+              //   imgElement.disabled;
+            });
+
+
+  })
+  function createProduct(){
+    let user_id = window.sessionStorage.getItem("ID_KEY")
+    let name = $("#name").val();
+    let price = $("#price").val();
+    let quantity = $("#quantity").val();
+    let image = $("#image1").val();
+    let category = $("#category").val();
+    let description = $("#description").val()
+    let newProduct = {
+      name: name,
+      price: price,
+      quantity : quantity,
+      image : image,
+      category : category,
+      description : description,
+      appuser : user_id
+    };
+    $.ajax({
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': window.sessionStorage.getItem('TOKEN_KEY')
+      },
+      type: "POST",
+      data: JSON.stringify(newProduct),
+      //tên API
+      url: 'http://localhost:8080/seller/product/save',
+      //xử lý khi thành công
+      success: function (data) {
+        window.location.href("Home.html")
+      }})
+    //chặn sự kiện mặc định của thẻ
+  }
+
+
+
+
+</script>
 
 
 </body>
