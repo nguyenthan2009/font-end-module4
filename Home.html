@@ -248,6 +248,10 @@
 
 <script>
     $(document).ready(function () {
+        let Test1 = window.localStorage.getItem('listProduct');
+        for(let i = 0; i < Test1.length; i++){
+            console.log(Test1[i])
+        }
       let Test =  window.sessionStorage.getItem('ROLE_KEY')
         let a = document.getElementById('Test')
         if(Test == 'ROLE_USER'){

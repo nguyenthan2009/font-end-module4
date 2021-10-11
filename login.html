@@ -87,6 +87,11 @@
                     window.sessionStorage.setItem('AVATAR_KEY',data.avatar);
                     window.sessionStorage.setItem('ID_KEY',data.user_id);
                     window.sessionStorage.setItem('ROLE_KEY',data.role)
+                    let product = []
+                    // let Cart = {
+                    //     productList : product
+                    // }
+                    window.localStorage.setItem("listProduct",JSON.stringify(product))
                     window.location.href = 'Home.html';
                 }
             })

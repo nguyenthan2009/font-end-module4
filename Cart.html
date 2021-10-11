@@ -209,8 +209,8 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-lg-10 offset-lg-1">
-        <div class="cart_container">
-          <div class="cart_title">Shopping Cart<small> (1 item in your cart) </small></div>
+        <div  class="cart_container">
+          <div class="cart_title">Shopping Cart</div>
           <div id="Test" class="cart_items">
             <ul class="cart_list">
               <li  class="cart_item clearfix">
@@ -221,12 +221,13 @@
                     <div class="cart_item_text">Samsung C7 Pro</div>
                   </div>
                   <div class="cart_item_color cart_info_col">
-                    <div class="cart_item_title">Color</div>
-                    <div class="cart_item_text"><span style="background-color:#999999;"></span>Silver</div>
+                    <div class="cart_item_title">Category</div>
+                    <div class="cart_item_text"></div>
                   </div>
                   <div class="cart_item_quantity cart_info_col">
                     <div class="cart_item_title">Quantity</div>
-                    <div class="cart_item_text">1</div>
+                    <input type="number" id="Test2" value="1"style="width:40px"/>
+<!--                    <div class="cart_item_text">1</div>-->
                   </div>
                   <div class="cart_item_price cart_info_col">
                     <div class="cart_item_title">Price</div>
@@ -240,13 +241,14 @@
               </li>
             </ul>
           </div>
-          <div class="order_total">
-            <div class="order_total_content text-md-right">
-              <div class="order_total_title">Order Total:</div>
-              <div class="order_total_amount">₹22000</div>
-            </div>
-          </div>
-          <div class="cart_buttons"> <button type="button" class="button cart_button_clear">Continue Shopping</button> <button type="button" class="button cart_button_checkout">Add to Cart</button> </div>
+<!--          <div class="order_total">-->
+<!--            <div class="order_total_content text-md-right">-->
+<!--              <div class="order_total_title">Order Total:</div>-->
+<!--              <div class="order_total_amount">₹22000</div>-->
+<!--            </div>-->
+<!--          </div>-->
+          <div class="cart_buttons"> <a href="Home.html"><button type="button" class="button cart_button_clear">Continue Shopping</button></a> <button type="button" class="button cart_button_checkout">Add to Cart</button> </div>
+          <a href="Home.html">Home </a>
         </div>
       </div>
     </div>
@@ -256,16 +258,83 @@
 <script>
   $(document).ready(function () {
     // document.getElementById("Test").innerHTML
-      let id = window.sessionStorage.getItem("product_id")
+      let list = JSON.parse(window.localStorage.getItem("listProduct"))
+    console.log(list.length)
 
-      $.ajax({
-        type: "GET",
-        url: 'http://localhost:8080/rest/addtoCart/'+id,
-        success: function (data) {
+      console.log(list)
+          let content = ''
+          let total =0;
+          for (let i = 0; i < list.length; i++) {
+            total += list[i].quantity*list[i].price;
+            content +=`
+             <ul class="cart_list">
+              <li  class="cart_item clearfix">
+                <div class="cart_item_image"><img src="${list[i].image}" alt=""></div>
+                <div  class="cart_item_info d-flex flex-md-row flex-column justify-content-between">
+                  <div class="cart_item_name cart_info_col">
+                    <div class="cart_item_title">Name</div>
+                    <div class="cart_item_text">${list[i].name}</div>
+                  </div>
+                  <div class="cart_item_color cart_info_col">
+                    <div class="cart_item_title">Category</div>
+                    <div class="cart_item_text">${list[i].category}</div>
+                  </div>
+                  <div class="cart_item_quantity cart_info_col">
+                    <div class="cart_item_title">Quantity</div>
+                    <input type="number" id="Test2" onclick="plus(${list[i].id})" value="${list[i].quantity}"style="width:40px"/>
+<!--                    <div class="cart_item_text">1</div>-->
+                  </div>
+                  <div class="cart_item_price cart_info_col">
+                    <div class="cart_item_title">Price</div>
+                    <div class="cart_item_text">${list[i].price}</div>
+                  </div>
+                  <div class="cart_item_total cart_info_col">
+                    <div class="cart_item_title">Total</div>
+                    <div class="cart_item_text">${list[i].price*list[i].quantity}</div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+            `
+          }
+          content +=`
+          <div class="order_total">
+            <div class="order_total_content text-md-right">
+              <div class="order_total_title">Order Total:</div>
+              <div class="order_total_amount">${total}</div>
+            </div>
+          </div>
+
+          `
+          document.getElementById("Test").innerHTML = content;
+
+       //   window.localStorage("data",JSON.stringify(data))
 
 
 
-  }})})
+
+
+
+
+  })
+
+  function plus(id){
+    let quantity = document.getElementById('Test2').value;
+    console.log(quantity);
+    let list = JSON.parse(window.localStorage.getItem("listProduct"))
+    for (let i=0;i<list.length; i++){
+      if(list[i].id = id){
+        list[i].quantity = quantity;
+        console.log("ok")
+      }
+    }
+     window.localStorage.setItem("listProduct",JSON.stringify(list))
+    window.location.href = 'Cart.html'
+    event.preventDefault();
+
+
+
+  }
 </script>
 
 </html>
