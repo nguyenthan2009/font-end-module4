@@ -3,8 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <!--  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>-->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
 </head>
 <body>
+<script>
+    $(document).ready(function () {
+       let id = window.sessionStorage.getItem("product_id")
+        console.log(id)
+               $.ajax({
+               type: "GET",
+               url: 'http://localhost:8080/rest/addtoCart/'+id,
+               success: function (data) {
+                   for (let i=0;i < data.length; i++){
+                       console.log(data[i].productList)
+                   }
+
+        }})}
+    )
+</script>
 
 </body>
+
 </html>

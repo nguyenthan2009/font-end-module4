@@ -187,7 +187,7 @@
 
   })
   function createProduct(){
-    let user_id = window.sessionStorage.getItem("ID_KEY")
+   // let user_id = window.sessionStorage.getItem("ID_KEY")
     let name = $("#name").val();
     let price = $("#price").val();
     let quantity = $("#quantity").val();
@@ -201,7 +201,7 @@
       image : image,
       category : category,
       description : description,
-      appuser : user_id
+     // appuser : user_id
     };
     $.ajax({
       headers: {
@@ -215,7 +215,7 @@
       url: 'http://localhost:8080/seller/product/save',
       //xử lý khi thành công
       success: function (data) {
-        window.location.href("Home.html")
+        window.location.href = 'Home.html';
       }})
     //chặn sự kiện mặc định của thẻ
   }
