@@ -246,12 +246,7 @@
             }
 
             $.ajax({
-                // headers: {
-                //     'Accept': 'application/json',
-                //     'Content-Type': 'application/json',
-                //     'Authorization': window.sessionStorage.getItem('TOKEN_KEY')a
-                // },
-                //  data: JSON.stringify(page),
+
                 type: "GET",
                 url: 'http://localhost:8080/rest/showProduct',
                 success: function (data) {
@@ -261,7 +256,7 @@
 
                             ` <div class="product-item">
 
-                         <a href="productdetail.html"  onclick="productDetail(${data[i].id}><img src="assets/images/product_01.jpg" alt=""></a>
+                         <a href="productdetail.html" onclick="productDetail(${data[i].id})" ><img src="assets/images/product_01.jpg" alt=""></a>
                     <div class="down-content">
                         <a href="productdetail.html" onclick="productDetail(${data[i].id})"><h4>${data[i].name}</h4></a>
                         <h6>${data[i].quantity}</h6>
