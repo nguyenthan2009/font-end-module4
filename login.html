@@ -15,6 +15,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
       integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+<script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
 <head>
     <meta charset="UTF-8">
     <title>LOGIN</title>
@@ -86,6 +87,11 @@
                     window.sessionStorage.setItem('AVATAR_KEY',data.avatar);
                     window.sessionStorage.setItem('ID_KEY',data.user_id);
                     window.sessionStorage.setItem('ROLE_KEY',data.role)
+                    let product = []
+                    // let Cart = {
+                    //     productList : product
+                    // }
+                    window.localStorage.setItem("listProduct",JSON.stringify(product))
                     window.location.href = 'Home.html';
                 }
             })

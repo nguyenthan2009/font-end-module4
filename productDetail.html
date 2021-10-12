@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product detail</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap"
+          rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <link rel="stylesheet" href="assets/css/templatemo-sixteen.css">
+    <link rel="stylesheet" href="assets/css/owl.css">
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+
+    <!-- Additional Scripts -->
+    <script src="assets/js/custom.js"></script>
+    <script src="assets/js/owl.js"></script>
+    <script src="assets/js/slick.js"></script>
+    <script src="assets/js/isotope.js"></script>
+    <script src="assets/js/accordions.js"></script>
+
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.1/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <style>
+        .card {
+            border: none;
+            box-shadow: 5px 6px 6px 2px #e9ecef;
+            border-radius: 4px
+        }
+
+        .dots {
+            height: 4px;
+            width: 4px;
+            margin-bottom: 2px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block
+        }
+
+        .badge {
+            padding: 7px;
+            padding-right: 9px;
+            padding-left: 16px;
+            box-shadow: 5px 6px 6px 2px #e9ecef
+        }
+
+        .user-img {
+            margin-top: 4px
+        }
+
+        .check-icon {
+            font-size: 17px;
+            color: #c3bfbf;
+            top: 1px;
+            position: relative;
+            margin-left: 3px
+        }
+
+        .form-check-input {
+            margin-top: 6px;
+            margin-left: -24px !important;
+            cursor: pointer
+        }
+
+        .form-check-input:focus {
+            box-shadow: none
+        }
+
+        .icons i {
+            margin-left: 8px
+        }
+
+        .reply {
+            margin-left: 12px
+        }
+
+        .reply small {
+            color: #b7b4b4
+        }
+
+        .reply small:hover {
+            color: green;
+            cursor: pointer
+        }
+    </style>
+
+</head>
+<body>
+
+
+<section class="mb-5">
+
+    <div id="product-detail" class="row">
+    </div>
+
+    <!--rating box-->
+<!--    <div class="container">-->
+<!--        <div class="row" style="margin-top:40px;">-->
+<!--            <div class="col-md-6">-->
+<!--                <div class="well well-sm">-->
+<!--                    <div class="text-right">-->
+<!--                        <a class="btn btn-success btn-green" href="#reviews-anchor" id="open-review-box">Leave a-->
+<!--                            Review</a>-->
+<!--                    </div>-->
+
+<!--                    <div class="row" id="post-review-box" style="display:none;">-->
+<!--                        <div class="col-md-12">-->
+<!--                            <form accept-charset="UTF-8" action="" method="post">-->
+<!--                                <input id="ratings-hidden" name="rating" type="hidden">-->
+<!--                                <textarea class="form-control animated" cols="50" id="new-review" name="comment"-->
+<!--                                          placeholder="Enter your review here..." rows="5"></textarea>-->
+
+<!--                                <div class="text-right">-->
+<!--                                    <div class="stars starrr" data-rating="0"></div>-->
+<!--                                    <a class="btn btn-danger btn-sm" href="#" id="close-review-box"-->
+<!--                                       style="display:none; margin-right: 10px;">-->
+<!--                                        <span class="glyphicon glyphicon-remove"></span>Cancel</a>-->
+<!--                                    <button id="save_rating" class="btn btn-success btn-lg" type="submit"-->
+<!--                                    >Save-->
+<!--                                    </button>-->
+<!--                                </div>-->
+<!--                            </form>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+</section>
+<!--Section: Block Content-->
+<div class="container mt-5">
+    <div class="row d-flex justify-content-center">
+        <div id="showComment"  class="col-md-8">
+            <div class="card p-3">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="user d-flex flex-row align-items-center"> <img src="https://i.imgur.com/hczKIze.jpg" width="30" class="user-img rounded-circle mr-2"> <span><small class="font-weight-bold text-primary">james_olesenn</small> <small class="font-weight-bold">Hmm, This poster looks cool</small></span> </div> <small>2 days ago</small>
+                </div>
+                <div class="action d-flex justify-content-between mt-2 align-items-center">
+                    <div class="reply px-4"> <small>Remove</small> <span class="dots"></span> <small>Reply</small> <span class="dots"></span> <small>Translate</small> </div>
+                    <div class="icons align-items-center"> <i class="fa fa-star text-warning"></i> <i class="fa fa-check-circle-o check-icon"></i> </div>
+                </div>
+            </div>
+            <div class="card p-3 mt-2">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="user d-flex flex-row align-items-center"> <img src="https://i.imgur.com/C4egmYM.jpg" width="30" class="user-img rounded-circle mr-2"> <span><small class="font-weight-bold text-primary">olan_sams</small> <small class="font-weight-bold">Loving your work and profile! </small></span> </div> <small>3 days ago</small>
+                </div>
+                <div class="action d-flex justify-content-between mt-2 align-items-center">
+                    <div class="reply px-4"> <small>Remove</small> <span class="dots"></span> <small>Reply</small> <span class="dots"></span> <small>Translate</small> </div>
+                    <div class="icons align-items-center"> <i class="fa fa-check-circle-o check-icon text-primary"></i> </div>
+                </div>
+            </div>
+            <div class="card p-3 mt-2">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="user d-flex flex-row align-items-center"> <img src="https://i.imgur.com/0LKZQYM.jpg" width="30" class="user-img rounded-circle mr-2"> <span><small class="font-weight-bold text-primary">rashida_jones</small> <small class="font-weight-bold">Really cool Which filter are you using? </small></span> </div> <small>3 days ago</small>
+                </div>
+                <div class="action d-flex justify-content-between mt-2 align-items-center">
+                    <div class="reply px-4"> <small>Remove</small> <span class="dots"></span> <small>Reply</small> <span class="dots"></span> <small>Translate</small> </div>
+                    <div class="icons align-items-center"> <i class="fa fa-user-plus text-muted"></i> <i class="fa fa-star-o text-muted"></i> <i class="fa fa-check-circle-o check-icon text-primary"></i> </div>
+                </div>
+            </div>
+            <div class="card p-3 mt-2">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="user d-flex flex-row align-items-center"> <img src="https://i.imgur.com/ZSkeqnd.jpg" width="30" class="user-img rounded-circle mr-2"> <span><small class="font-weight-bold text-primary">simona_rnasi</small> <small class="font-weight-bold text-primary">@macky_lones</small> <small class="font-weight-bold text-primary">@rashida_jones</small> <small class="font-weight-bold">Thanks </small></span> </div> <small>3 days ago</small>
+                </div>
+                <div class="action d-flex justify-content-between mt-2 align-items-center">
+                    <div class="reply px-4"> <small>Remove</small> <span class="dots"></span> <small>Reply</small> <span class="dots"></span> <small>Translate</small> </div>
+                    <div class="icons align-items-center"> <i class="fa fa-check-circle-o check-icon text-primary"></i> </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--test rating -->
+
+<!--<div id="testReviewBox">-->
+<!--    <textarea id="comment1" style="margin-left:50px" rows="6" cols="30">-->
+<!--   </textarea>-->
+<!--</div>-->
+<!--<input type="button" style="margin-left: 140px" value="review" id="review" >-->
+<!--Rating and Review-->
+<!--Material textarea-->
+<!--Textarea with icon prefix-->
+<div class="form-group shadow-textarea">
+    <textarea id="comment" style="margin-top: 30px;width: 50%;margin-left: 300px" class="form-control z-depth-1" id="exampleFormControlTextarea6" rows="3" placeholder="Write something here..."></textarea>
+</div>
+<button type="button" style="margin-left: 600px" class="btn btn-primary" id="review">Review</button>
+<script type="text/javascript">
+    $(document).ready(function () {
+        // MDB Lightbox Init
+        $(function () {
+            $("#mdb-lightbox-ui").load("mdb-addons/mdb-lightbox-ui.html");
+        });
+
+
+        let id = window.sessionStorage.getItem("product_id")
+        console.log(id)
+
+        $.ajax(
+            {
+                type: "GET",
+                url: 'http://localhost:8080/rest/findProduct/' + id,
+                success:
+                    function (data) {
+                        window.localStorage.setItem("product",JSON.stringify(data))
+                        console.log(data.name)
+                        let a = document.getElementById("product-detail")
+                        a.innerHTML +=
+                            ` <div class="row">
+        <div class="col-md-6 mb-4 mb-md-0">
+            <div id="mdb-lightbox-ui"></div>
+            <div class="mdb-lightbox">
+                <div class="row product-gallery mx-1">
+                    <div class="col-12 mb-0">
+                        <figure class="view overlay rounded z-depth-1 main-img">
+                            <a href="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/15a.jpg"
+                               data-size="710x823">
+                                <img src="${data.image}"
+                                     class="img-fluid z-depth-1">
+                            </a>
+                        </figure>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="product-detail" class="col-md-6">
+            <h5>${data.name}</h5>
+            <p class="mb-2 text-muted text-uppercase small">${data.category}</p>
+             <p class="pt-1"><span class="pl-0 pb-0 w-25"> Price :</span>${data.price}</p>
+            <p class="pt-1"><span class="pl-0 pb-0 w-25"> Pescription :</span>${data.description}</p>
+            <div class="table-responsive">
+            </div>
+            <hr>
+            <div class="table-responsive mb-2">
+                <table class="table table-sm table-borderless">
+                    <tbody>
+                    <tr>
+                        <td class="pl-0 pb-0 w-25">Quantity</td>
+                    </tr>
+                    <tr>
+                        <td class="pl-0">
+                            <div class="def-number-input number-input safari_only mb-0">
+                                <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+                                        class="minus"></button>
+                                <input class="quantity" id="quantity" min="0" name="quantity" value="1" type="number">
+                                <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                                        class="plus"></button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr><td></td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <button type="button" class="btn btn-primary btn-md mr-1 mb-2">Buy now</button>
+            <button type="button" class="btn btn-light btn-md mr-1 mb-2" onclick="shopping_cart()" id="shopping_cart"><i
+                    class="fas fa-shopping-cart pr-2"></i>Add to cart</button>
+                    <tr>
+    <td>
+    </td>
+</tr>
+        </div>
+    </div> `
+                    }
+            }
+        )
+
+
+
+    });
+
+
+</script>
+<script>
+    $(document).ready(function () {
+        let product_id = window.sessionStorage.getItem('product_id')
+        $.ajax({
+            type: "GET",
+            url: 'http://localhost:8080/rest/listCommentProduct/' + product_id,
+            success: function (data) {
+                let content = ''
+                for (let i = 0; i < data.length; i++) {
+                    content += `
+                                 <div class="card p-3">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="user d-flex flex-row align-items-center"> <img src="https://i.imgur.com/hczKIze.jpg" width="30" class="user-img rounded-circle mr-2"> <span><small class="font-weight-bold text-primary">${data[i].user.username}</small> <small class="font-weight-bold">${data[i].content}</small></span> </div> <small>${data[i].date}</small>
+                </div>
+                <div class="action d-flex justify-content-between mt-2 align-items-center">
+                    <div class="reply px-4"> <small>Remove</small> <span class="dots"></span> <small>Reply</small> <span class="dots"></span> <small>Translate</small> </div>
+                    <div class="icons align-items-center"> <i class="fa fa-star text-warning"></i> <i class="fa fa-check-circle-o check-icon"></i> </div>
+                </div>
+            </div>
+                                `
+                }
+                document.getElementById("showComment").innerHTML = content
+            }
+        })
+    })
+
+        $('#review').click(function (){
+            //lay du lieu
+            // let id = window.sessionStorage.getItem()
+            let comment = $('#comment').val();
+            console.log(comment)
+            let user_id = window.sessionStorage.getItem('ID_KEY')
+            let user= {id: user_id}
+            console.log(user_id)
+            console.log("user_id====", user_id)
+            let product_id = window.sessionStorage.getItem('product_id')
+            console.log("product_id===", product_id)
+            let product= {id: product_id}
+            let newReview = {
+                content: comment
+            };
+            // goi ajax
+            $.ajax({
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'Authorization': window.sessionStorage.getItem('TOKEN_KEY')
+                },
+                type: "POST",
+                data: JSON.stringify(newReview),
+                //tên API
+                url: 'http://localhost:8080/user/createComment/'+product_id+'/'+user_id,
+                //xử lý khi thành công
+                success: function () {
+                    let product_id = window.sessionStorage.getItem('product_id')
+                    $.ajax({
+                        type: "GET",
+                        url: 'http://localhost:8080/rest/listCommentProduct/'+product_id,
+                        success: function (data) {
+                             let content = ''
+                            for(let i = 0; i < data.length; i++) {
+                                content += `
+                                 <div class="card p-3">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="user d-flex flex-row align-items-center"> <img src="https://i.imgur.com/hczKIze.jpg" width="30" class="user-img rounded-circle mr-2"> <span><small class="font-weight-bold text-primary">${data[i].user.username}</small> <small class="font-weight-bold">${data[i].content}</small></span> </div> <small>${data[i].date}</small>
+                </div>
+                <div class="action d-flex justify-content-between mt-2 align-items-center">
+                    <div class="reply px-4"> <small onclick="deleteProduct(${data[i].user.id})">Remove</small> <span class="dots"></span> <small>Reply</small> <span class="dots"></span> <small>Translate</small> </div>
+                    <div class="icons align-items-center"> <i class="fa fa-star text-warning"></i> <i class="fa fa-check-circle-o check-icon"></i> </div>
+                </div>
+            </div>
+                                `
+                                document.getElementById("showComment").innerHTML = content
+
+                            }
+
+                        }
+                    })
+                }
+            })
+            //chặn sự kiện mặc định của thẻ
+            event.preventDefault();
+        })
+    function shopping_cart(){
+        let value = document.getElementById('quantity').value
+        console.log(value)
+     let product =   JSON.parse(window.localStorage.getItem("product"))
+        product.quantity = value;
+        let listProduct = JSON.parse(window.localStorage.getItem("listProduct"))
+        console.log(listProduct)
+       //  console.log(listProduct)
+         listProduct.push(product)
+        console.log(listProduct)
+        window.localStorage.setItem("listProduct",JSON.stringify(listProduct))
+        window.location.href= 'Cart.html';
+
+    }
+    function deleteProduct(id){
+        let user_id = window.sessionStorage.getItem('ID_KEY')
+        console.log(id)
+      if(id==user_id) {
+         console.log(id)
+          $.ajax({
+              type: "GET",
+              url: 'http://localhost:8080/user/deleteComment/' + id,
+              success: function (data) {
+                  let content = ''
+                  for (let i = 0; i < data.length; i++) {
+                      content += `
+                                 <div class="card p-3">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="user d-flex flex-row align-items-center"> <img src="https://i.imgur.com/hczKIze.jpg" width="30" class="user-img rounded-circle mr-2"> <span><small class="font-weight-bold text-primary">${data[i].user.username}</small> <small class="font-weight-bold">${data[i].content}</small></span> </div> <small>${data[i].date}</small>
+                </div>
+                <div class="action d-flex justify-content-between mt-2 align-items-center">
+                    <div class="reply px-4"> <small onclick="deleteProduct(${data[i].user.id})">Remove</small> <span class="dots"></span> <small>Reply</small> <span class="dots"></span> <small>Translate</small> </div>
+                    <div class="icons align-items-center"> <i class="fa fa-star text-warning"></i> <i class="fa fa-check-circle-o check-icon"></i> </div>
+                </div>
+            </div>
+                                `
+
+                  }
+                  document.getElementById("showComment").innerHTML = content
+
+              }
+
+
+          })
+          event.preventDefault();
+      }}
+
+
+
+
+</script>
+
+
+
+
+</body>
+</html>
