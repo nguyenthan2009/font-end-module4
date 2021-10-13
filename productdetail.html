@@ -30,96 +30,135 @@
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.1/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <style>
+        .card {
+            border: none;
+            box-shadow: 5px 6px 6px 2px #e9ecef;
+            border-radius: 4px
+        }
+
+        .dots {
+            height: 4px;
+            width: 4px;
+            margin-bottom: 2px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block
+        }
+
+        .badge {
+            padding: 7px;
+            padding-right: 9px;
+            padding-left: 16px;
+            box-shadow: 5px 6px 6px 2px #e9ecef
+        }
+
+        .user-img {
+            margin-top: 4px
+        }
+
+        .check-icon {
+            font-size: 17px;
+            color: #c3bfbf;
+            top: 1px;
+            position: relative;
+            margin-left: 3px
+        }
+
+        .form-check-input {
+            margin-top: 6px;
+            margin-left: -24px !important;
+            cursor: pointer
+        }
+
+        .form-check-input:focus {
+            box-shadow: none
+        }
+
+        .icons i {
+            margin-left: 8px
+        }
+
+        .reply {
+            margin-left: 12px
+        }
+
+        .reply small {
+            color: #b7b4b4
+        }
+
+        .reply small:hover {
+            color: green;
+            cursor: pointer
+        }
+    </style>
 
 </head>
 <body>
 
-<!--<script type="text/javascript">-->
 
-<!--    $(document).ready(function () {-->
-
-
-<!--        $('#testSave').click(function () {-->
-<!--            let check = window.sessionStorage.getItem('TOKEN_KEY')-->
-<!--            if (check == null) {-->
-<!--                window.location.href = 'login.html'-->
-<!--            }-->
-<!--            let newReview = {};-->
-<!--            newReview.content = $('#testReview').val();-->
-<!--            newReview.rate = $('#testRate').val();-->
-
-<!--            console.log("hien thi new review====", newReview)-->
-<!--            $.ajax({-->
-<!--                headers: {-->
-<!--                    'Accept': 'application/json',-->
-<!--                    'Content-Type': 'application/json',-->
-<!--                    'Authorization': window.sessionStorage.getItem('TOKEN_KEY')-->
-<!--                },-->
-<!--                type: 'POST',-->
-<!--                url: 'http://localhost:8080/user/createComment',-->
-<!--                data: JSON.stringify(newReview),-->
-<!--                success: function (data) {-->
-<!--                    console.log("check data====", data)-->
-<!--                }-->
-
-
-<!--            })-->
-<!--        })-->
-<!--    })-->
-
-<!--</script>-->
-<!--Section: Block Content-->
 <section class="mb-5">
 
     <div id="product-detail" class="row">
     </div>
-
-    <!--rating box-->
-    <div class="container">
-        <div class="row" style="margin-top:40px;">
-            <div class="col-md-6">
-                <div class="well well-sm">
-                    <div class="text-right">
-                        <a class="btn btn-success btn-green" href="#reviews-anchor" id="open-review-box">Leave a
-                            Review</a>
-                    </div>
-
-                    <div class="row" id="post-review-box" style="display:none;">
-                        <div class="col-md-12">
-                            <form accept-charset="UTF-8" action="" method="post">
-                                <input id="ratings-hidden" name="rating" type="hidden">
-                                <textarea class="form-control animated" cols="50" id="new-review" name="comment"
-                                          placeholder="Enter your review here..." rows="5"></textarea>
-
-                                <div class="text-right">
-                                    <div class="stars starrr" data-rating="0"></div>
-                                    <a class="btn btn-danger btn-sm" href="#" id="close-review-box"
-                                       style="display:none; margin-right: 10px;">
-                                        <span class="glyphicon glyphicon-remove"></span>Cancel</a>
-                                    <button id="save_rating" class="btn btn-success btn-lg" type="submit"
-                                    >Save
-                                    </button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
+</section>
+<!--Section: Block Content-->
+<div class="container mt-5">
+    <div class="row d-flex justify-content-center">
+        <div id="showComment"  class="col-md-8">
+            <div class="card p-3">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="user d-flex flex-row align-items-center"> <img src="https://i.imgur.com/hczKIze.jpg" width="30" class="user-img rounded-circle mr-2"> <span><small class="font-weight-bold text-primary">james_olesenn</small> <small class="font-weight-bold">Hmm, This poster looks cool</small></span> </div> <small>2 days ago</small>
                 </div>
-
+                <div class="action d-flex justify-content-between mt-2 align-items-center">
+                    <div class="reply px-4"> <small>Remove</small> <span class="dots"></span> <small>Reply</small> <span class="dots"></span> <small>Translate</small> </div>
+                    <div class="icons align-items-center"> <i class="fa fa-star text-warning"></i> <i class="fa fa-check-circle-o check-icon"></i> </div>
+                </div>
+            </div>
+            <div class="card p-3 mt-2">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="user d-flex flex-row align-items-center"> <img src="https://i.imgur.com/C4egmYM.jpg" width="30" class="user-img rounded-circle mr-2"> <span><small class="font-weight-bold text-primary">olan_sams</small> <small class="font-weight-bold">Loving your work and profile! </small></span> </div> <small>3 days ago</small>
+                </div>
+                <div class="action d-flex justify-content-between mt-2 align-items-center">
+                    <div class="reply px-4"> <small>Remove</small> <span class="dots"></span> <small>Reply</small> <span class="dots"></span> <small>Translate</small> </div>
+                    <div class="icons align-items-center"> <i class="fa fa-check-circle-o check-icon text-primary"></i> </div>
+                </div>
+            </div>
+            <div class="card p-3 mt-2">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="user d-flex flex-row align-items-center"> <img src="https://i.imgur.com/0LKZQYM.jpg" width="30" class="user-img rounded-circle mr-2"> <span><small class="font-weight-bold text-primary">rashida_jones</small> <small class="font-weight-bold">Really cool Which filter are you using? </small></span> </div> <small>3 days ago</small>
+                </div>
+                <div class="action d-flex justify-content-between mt-2 align-items-center">
+                    <div class="reply px-4"> <small>Remove</small> <span class="dots"></span> <small>Reply</small> <span class="dots"></span> <small>Translate</small> </div>
+                    <div class="icons align-items-center"> <i class="fa fa-user-plus text-muted"></i> <i class="fa fa-star-o text-muted"></i> <i class="fa fa-check-circle-o check-icon text-primary"></i> </div>
+                </div>
+            </div>
+            <div class="card p-3 mt-2">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="user d-flex flex-row align-items-center"> <img src="https://i.imgur.com/ZSkeqnd.jpg" width="30" class="user-img rounded-circle mr-2"> <span><small class="font-weight-bold text-primary">simona_rnasi</small> <small class="font-weight-bold text-primary">@macky_lones</small> <small class="font-weight-bold text-primary">@rashida_jones</small> <small class="font-weight-bold">Thanks </small></span> </div> <small>3 days ago</small>
+                </div>
+                <div class="action d-flex justify-content-between mt-2 align-items-center">
+                    <div class="reply px-4"> <small>Remove</small> <span class="dots"></span> <small>Reply</small> <span class="dots"></span> <small>Translate</small> </div>
+                    <div class="icons align-items-center"> <i class="fa fa-check-circle-o check-icon text-primary"></i> </div>
+                </div>
             </div>
         </div>
     </div>
-</section>
-<!--Section: Block Content-->
-
+</div>
 <!--test rating -->
 
-<div id="testReviewBox">
-    <input type="text" id="testReview">
-    <input type="number" id="testRate" value="2">
-    <input type="button"  value="SAVE" id="save" >
-</div>
+<!--<div id="testReviewBox">-->
+<!--    <textarea id="comment1" style="margin-left:50px" rows="6" cols="30">-->
+<!--   </textarea>-->
+<!--</div>-->
+<!--<input type="button" style="margin-left: 140px" value="review" id="review" >-->
 <!--Rating and Review-->
-
+<!--Material textarea-->
+<!--Textarea with icon prefix-->
+<div class="form-group shadow-textarea">
+    <textarea id="comment" style="margin-top: 30px;width: 50%;margin-left: 300px" class="form-control z-depth-1" id="exampleFormControlTextarea6" rows="3" placeholder="Write something here..."></textarea>
+</div>
+<button type="button" style="margin-left: 600px" class="btn btn-primary" id="review">Review</button>
 <script type="text/javascript">
     $(document).ready(function () {
         // MDB Lightbox Init
@@ -137,35 +176,28 @@
                 url: 'http://localhost:8080/rest/findProduct/' + id,
                 success:
                     function (data) {
+                        window.localStorage.setItem("product",JSON.stringify(data))
                         console.log(data.name)
                         let a = document.getElementById("product-detail")
                         a.innerHTML +=
                             ` <div class="row">
         <div class="col-md-6 mb-4 mb-md-0">
-
             <div id="mdb-lightbox-ui"></div>
-
             <div class="mdb-lightbox">
-
                 <div class="row product-gallery mx-1">
-
                     <div class="col-12 mb-0">
                         <figure class="view overlay rounded z-depth-1 main-img">
                             <a href="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/15a.jpg"
                                data-size="710x823">
-                                <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/15a.jpg"
+                                <img src="${data.image}"
                                      class="img-fluid z-depth-1">
                             </a>
                         </figure>
                     </div>
-
                 </div>
-
             </div>
-
         </div>
         <div id="product-detail" class="col-md-6">
-
             <h5>${data.name}</h5>
             <p class="mb-2 text-muted text-uppercase small">${data.category}</p>
              <p class="pt-1"><span class="pl-0 pb-0 w-25"> Price :</span>${data.price}</p>
@@ -178,14 +210,13 @@
                     <tbody>
                     <tr>
                         <td class="pl-0 pb-0 w-25">Quantity</td>
-
                     </tr>
                     <tr>
                         <td class="pl-0">
                             <div class="def-number-input number-input safari_only mb-0">
                                 <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
                                         class="minus"></button>
-                                <input class="quantity" min="0" name="quantity" value="1" type="number">
+                                <input class="quantity" id="quantity" min="0" name="quantity" value="1" type="number">
                                 <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
                                         class="plus"></button>
                             </div>
@@ -198,14 +229,11 @@
             <button type="button" class="btn btn-primary btn-md mr-1 mb-2">Buy now</button>
             <button type="button" class="btn btn-light btn-md mr-1 mb-2" onclick="shopping_cart()" id="shopping_cart"><i
                     class="fas fa-shopping-cart pr-2"></i>Add to cart</button>
-
                     <tr>
     <td>
-
     </td>
 </tr>
         </div>
-
     </div> `
                     }
             }
@@ -219,12 +247,35 @@
 </script>
 <script>
     $(document).ready(function () {
-        $('#save').click(function (){
+        let product_id = window.sessionStorage.getItem('product_id')
+        $.ajax({
+            type: "GET",
+            url: 'http://localhost:8080/rest/listCommentProduct/' + product_id,
+            success: function (data) {
+                let content = ''
+                for (let i = 0; i < data.length; i++) {
+                    content += `
+                                 <div class="card p-3">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="user d-flex flex-row align-items-center"> <img src="https://i.imgur.com/hczKIze.jpg" width="30" class="user-img rounded-circle mr-2"> <span><small class="font-weight-bold text-primary">${data[i].user.username}</small> <small class="font-weight-bold">${data[i].content}</small></span> </div> <small>${data[i].date}</small>
+                </div>
+                <div class="action d-flex justify-content-between mt-2 align-items-center">
+                    <div class="reply px-4"> <small>Remove</small> <span class="dots"></span> <small>Reply</small> <span class="dots"></span> <small>Translate</small> </div>
+                    <div class="icons align-items-center"> <i class="fa fa-star text-warning"></i> <i class="fa fa-check-circle-o check-icon"></i> </div>
+                </div>
+            </div>
+                                `
+                }
+                document.getElementById("showComment").innerHTML = content
+            }
+        })
+    })
+
+        $('#review').click(function (){
             //lay du lieu
             // let id = window.sessionStorage.getItem()
-            let review = $('#testReview').val();
-            let rate = $('#testRate').val();
-            console.log("rate====",rate)
+            let comment = $('#comment').val();
+            console.log(comment)
             let user_id = window.sessionStorage.getItem('ID_KEY')
             let user= {id: user_id}
             console.log(user_id)
@@ -233,10 +284,7 @@
             console.log("product_id===", product_id)
             let product= {id: product_id}
             let newReview = {
-                user: user,
-                product: product,
-                content: review,
-                rate: rate,
+                content: comment
             };
             // goi ajax
             $.ajax({
@@ -248,203 +296,91 @@
                 type: "POST",
                 data: JSON.stringify(newReview),
                 //tên API
-                url: 'http://localhost:8080/user/createComment',
+                url: 'http://localhost:8080/user/createComment/'+product_id+'/'+user_id,
                 //xử lý khi thành công
-                success: function (data) {
-                    console.log('kiem tra data===', data)
+                success: function () {
+                    let product_id = window.sessionStorage.getItem('product_id')
+                    $.ajax({
+                        type: "GET",
+                        url: 'http://localhost:8080/rest/listCommentProduct/'+product_id,
+                        success: function (data) {
+                             let content = ''
+                            for(let i = 0; i < data.length; i++) {
+                                content += `
+                                 <div class="card p-3">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="user d-flex flex-row align-items-center"> <img src="https://i.imgur.com/hczKIze.jpg" width="30" class="user-img rounded-circle mr-2"> <span><small class="font-weight-bold text-primary">${data[i].user.username}</small> <small class="font-weight-bold">${data[i].content}</small></span> </div> <small>${data[i].date}</small>
+                </div>
+                <div class="action d-flex justify-content-between mt-2 align-items-center">
+                    <div class="reply px-4"> <small onclick="deleteProduct(${data[i].user.id})">Remove</small> <span class="dots"></span> <small>Reply</small> <span class="dots"></span> <small>Translate</small> </div>
+                    <div class="icons align-items-center"> <i class="fa fa-star text-warning"></i> <i class="fa fa-check-circle-o check-icon"></i> </div>
+                </div>
+            </div>
+                                `
+                                document.getElementById("showComment").innerHTML = content
+
+                            }
+
+                        }
+                    })
                 }
             })
             //chặn sự kiện mặc định của thẻ
             event.preventDefault();
         })
+    function shopping_cart(){
+        let value = document.getElementById('quantity').value
+        console.log(value)
+     let product =   JSON.parse(window.localStorage.getItem("product"))
+        product.quantity = value;
+        let listProduct = JSON.parse(window.localStorage.getItem("listProduct"))
+        console.log(listProduct)
+       //  console.log(listProduct)
+         listProduct.push(product)
+        console.log(listProduct)
+        window.localStorage.setItem("listProduct",JSON.stringify(listProduct))
+        window.location.href= 'Cart.html';
 
-    })
+    }
+    function deleteProduct(id){
+        let user_id = window.sessionStorage.getItem('ID_KEY')
+        console.log(id)
+      if(id==user_id) {
+         console.log(id)
+          $.ajax({
+              type: "GET",
+              url: 'http://localhost:8080/user/deleteComment/' + id,
+              success: function (data) {
+                  let content = ''
+                  for (let i = 0; i < data.length; i++) {
+                      content += `
+                                 <div class="card p-3">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="user d-flex flex-row align-items-center"> <img src="https://i.imgur.com/hczKIze.jpg" width="30" class="user-img rounded-circle mr-2"> <span><small class="font-weight-bold text-primary">${data[i].user.username}</small> <small class="font-weight-bold">${data[i].content}</small></span> </div> <small>${data[i].date}</small>
+                </div>
+                <div class="action d-flex justify-content-between mt-2 align-items-center">
+                    <div class="reply px-4"> <small onclick="deleteProduct(${data[i].user.id})">Remove</small> <span class="dots"></span> <small>Reply</small> <span class="dots"></span> <small>Translate</small> </div>
+                    <div class="icons align-items-center"> <i class="fa fa-star text-warning"></i> <i class="fa fa-check-circle-o check-icon"></i> </div>
+                </div>
+            </div>
+                                `
+
+                  }
+                  document.getElementById("showComment").innerHTML = content
+
+              }
+
+
+          })
+          event.preventDefault();
+      }}
+
+
+
+
 </script>
 
-<!--//add rating js-->
-<script>
-    (function (e) {
-        var t, o = {className: "autosizejs", append: "", callback: !1, resizeDelay: 10},
-            i = '<textarea tabindex="-1" style="position:absolute; top:-999px; left:0; right:auto; bottom:auto; border:0; padding: 0; -moz-box-sizing:content-box; -webkit-box-sizing:content-box; box-sizing:content-box; word-wrap:break-word; height:0 !important; min-height:0 !important; overflow:hidden; transition:none; -webkit-transition:none; -moz-transition:none;"/>',
-            n = ["fontFamily", "fontSize", "fontWeight", "fontStyle", "letterSpacing", "textTransform", "wordSpacing", "textIndent"],
-            s = e(i).data("autosize", !0)[0];
-        s.style.lineHeight = "99px", "99px" === e(s).css("lineHeight") && n.push("lineHeight"), s.style.lineHeight = "", e.fn.autosize = function (i) {
-            return this.length ? (i = e.extend({}, o, i || {}), s.parentNode !== document.body && e(document.body).append(s), this.each(function () {
-                function o() {
-                    var t, o;
-                    "getComputedStyle" in window ? (t = window.getComputedStyle(u, null), o = u.getBoundingClientRect().width, e.each(["paddingLeft", "paddingRight", "borderLeftWidth", "borderRightWidth"], function (e, i) {
-                        o -= parseInt(t[i], 10)
-                    }), s.style.width = o + "px") : s.style.width = Math.max(p.width(), 0) + "px"
-                }
 
-                function a() {
-                    var a = {};
-                    if (t = u, s.className = i.className, d = parseInt(p.css("maxHeight"), 10), e.each(n, function (e, t) {
-                        a[t] = p.css(t)
-                    }), e(s).css(a), o(), window.chrome) {
-                        var r = u.style.width;
-                        u.style.width = "0px", u.offsetWidth, u.style.width = r
-                    }
-                }
-
-                function r() {
-                    var e, n;
-                    t !== u ? a() : o(), s.value = u.value + i.append, s.style.overflowY = u.style.overflowY, n = parseInt(u.style.height, 10), s.scrollTop = 0, s.scrollTop = 9e4, e = s.scrollTop, d && e > d ? (u.style.overflowY = "scroll", e = d) : (u.style.overflowY = "hidden", c > e && (e = c)), e += w, n !== e && (u.style.height = e + "px", f && i.callback.call(u, u))
-                }
-
-                function l() {
-                    clearTimeout(h), h = setTimeout(function () {
-                        var e = p.width();
-                        e !== g && (g = e, r())
-                    }, parseInt(i.resizeDelay, 10))
-                }
-
-                var d, c, h, u = this, p = e(u), w = 0, f = e.isFunction(i.callback), z = {
-                    height: u.style.height,
-                    overflow: u.style.overflow,
-                    overflowY: u.style.overflowY,
-                    wordWrap: u.style.wordWrap,
-                    resize: u.style.resize
-                }, g = p.width();
-                p.data("autosize") || (p.data("autosize", !0), ("border-box" === p.css("box-sizing") || "border-box" === p.css("-moz-box-sizing") || "border-box" === p.css("-webkit-box-sizing")) && (w = p.outerHeight() - p.height()), c = Math.max(parseInt(p.css("minHeight"), 10) - w || 0, p.height()), p.css({
-                    overflow: "hidden",
-                    overflowY: "hidden",
-                    wordWrap: "break-word",
-                    resize: "none" === p.css("resize") || "vertical" === p.css("resize") ? "none" : "horizontal"
-                }), "onpropertychange" in u ? "oninput" in u ? p.on("input.autosize keyup.autosize", r) : p.on("propertychange.autosize", function () {
-                    "value" === event.propertyName && r()
-                }) : p.on("input.autosize", r), i.resizeDelay !== !1 && e(window).on("resize.autosize", l), p.on("autosize.resize", r), p.on("autosize.resizeIncludeStyle", function () {
-                    t = null, r()
-                }), p.on("autosize.destroy", function () {
-                    t = null, clearTimeout(h), e(window).off("resize", l), p.off("autosize").off(".autosize").css(z).removeData("autosize")
-                }), r())
-            })) : this
-        }
-    })(window.jQuery || window.$);
-
-    var __slice = [].slice;
-    (function (e, t) {
-        var n;
-        n = function () {
-            function t(t, n) {
-                var r, i, s, o = this;
-                this.options = e.extend({}, this.defaults, n);
-                this.$el = t;
-                s = this.defaults;
-                for (r in s) {
-                    i = s[r];
-                    if (this.$el.data(r) != null) {
-                        this.options[r] = this.$el.data(r)
-                    }
-                }
-                this.createStars();
-                this.syncRating();
-                this.$el.on("mouseover.starrr", "span", function (e) {
-                    return o.syncRating(o.$el.find("span").index(e.currentTarget) + 1)
-                });
-                this.$el.on("mouseout.starrr", function () {
-                    return o.syncRating()
-                });
-                this.$el.on("click.starrr", "span", function (e) {
-                    return o.setRating(o.$el.find("span").index(e.currentTarget) + 1)
-                });
-                this.$el.on("starrr:change", this.options.change)
-            }
-
-            t.prototype.defaults = {
-                rating: void 0, numStars: 5, change: function (e, t) {
-                }
-            };
-            t.prototype.createStars = function () {
-                var e, t, n;
-                n = [];
-                for (e = 1, t = this.options.numStars; 1 <= t ? e <= t : e >= t; 1 <= t ? e++ : e--) {
-                    n.push(this.$el.append("<span class='glyphicon .glyphicon-star-empty'></span>"))
-                }
-                return n
-            };
-            t.prototype.setRating = function (e) {
-                if (this.options.rating === e) {
-                    e = void 0
-                }
-                this.options.rating = e;
-                this.syncRating();
-                return this.$el.trigger("starrr:change", e)
-            };
-            t.prototype.syncRating = function (e) {
-                var t, n, r, i;
-                e || (e = this.options.rating);
-                if (e) {
-                    for (t = n = 0, i = e - 1; 0 <= i ? n <= i : n >= i; t = 0 <= i ? ++n : --n) {
-                        this.$el.find("span").eq(t).removeClass("glyphicon-star-empty").addClass("glyphicon-star")
-                    }
-                }
-                if (e && e < 5) {
-                    for (t = r = e; e <= 4 ? r <= 4 : r >= 4; t = e <= 4 ? ++r : --r) {
-                        this.$el.find("span").eq(t).removeClass("glyphicon-star").addClass("glyphicon-star-empty")
-                    }
-                }
-                if (!e) {
-                    return this.$el.find("span").removeClass("glyphicon-star").addClass("glyphicon-star-empty")
-                }
-            };
-            return t
-        }();
-        return e.fn.extend({
-            starrr: function () {
-                var t, r;
-                r = arguments[0], t = 2 <= arguments.length ? __slice.call(arguments, 1) : [];
-                return this.each(function () {
-                    var i;
-                    i = e(this).data("star-rating");
-                    if (!i) {
-                        e(this).data("star-rating", i = new n(e(this), r))
-                    }
-                    if (typeof r === "string") {
-                        return i[r].apply(i, t)
-                    }
-                })
-            }
-        })
-    })(window.jQuery, window);
-    $(function () {
-        return $(".starrr").starrr()
-    })
-
-    $(function () {
-
-        $('#new-review').autosize({append: "\n"});
-
-        var reviewBox = $('#post-review-box');
-        var newReview = $('#new-review');
-        var openReviewBtn = $('#open-review-box');
-        var closeReviewBtn = $('#close-review-box');
-        var ratingsField = $('#ratings-hidden');
-
-        openReviewBtn.click(function (e) {
-            reviewBox.slideDown(400, function () {
-                $('#new-review').trigger('autosize.resize');
-                newReview.focus();
-            });
-            openReviewBtn.fadeOut(100);
-            closeReviewBtn.show();
-        });
-
-        closeReviewBtn.click(function (e) {
-            e.preventDefault();
-            reviewBox.slideUp(300, function () {
-                newReview.focus();
-                openReviewBtn.fadeIn(200);
-            });
-            closeReviewBtn.hide();
-
-        });
-
-        $('.starrr').on('starrr:change', function (e, value) {
-            ratingsField.val(value);
-        });
-    });
-</script>
 
 
 </body>
