@@ -247,7 +247,7 @@
 <!--              <div class="order_total_amount">₹22000</div>-->
 <!--            </div>-->
 <!--          </div>-->
-          <div class="cart_buttons"> <a href="Home.html"><button type="button" class="button cart_button_clear">Continue Shopping</button></a> <button type="button" class="button cart_button_checkout">Buy</button> </div>
+          <div class="cart_buttons"> <a href="Home.html"><button type="button" class="button cart_button_clear">Continue Shopping</button></a> <button type="button" onclick="buyProduct()" class="button cart_button_checkout">Buy</button> </div>
         </div>
       </div>
     </div>
@@ -330,6 +330,30 @@
      window.localStorage.setItem("listProduct",JSON.stringify(list))
     window.location.href = 'Cart.html'
     event.preventDefault();
+
+  }
+  function buyProduct(){
+    console.log("Test2")
+    let list = JSON.parse(window.localStorage.getItem("listProduct"))
+    console.log(list)
+    let user_id = window.sessionStorage.getItem('ID_KEY')
+    let  test= window.sessionStorage.getItem('TOKEN_KEY')
+    console.log(test)
+    let sell1 = list[0].quantity;
+    let sell2 = list[1].quantity;
+    $.ajax({
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': window.sessionStorage.getItem('TOKEN_KEY')
+      },
+      type : "GET",
+      url: 'http://localhost:8080/user/buy/'+sell1+'/'+sell2,
+      success : function (){
+        window.location.href = "myprofile.html";
+      }
+    })
+
 
 
 

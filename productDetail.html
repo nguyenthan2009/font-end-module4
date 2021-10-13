@@ -384,7 +384,7 @@
          console.log(id)
           $.ajax({
               type: "GET",
-              url: 'http://localhost:8080/user/deleteComment/' + id,
+              url: 'http://localhost:8080/user/deleteComment/'+id,
               success: function (data) {
                   let content = ''
                   for (let i = 0; i < data.length; i++) {

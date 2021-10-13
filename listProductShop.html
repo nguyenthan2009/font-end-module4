@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <style>
+        h2{
+            text-align: center;
+        }
+        .test{
+            background-color: #428bca;
+            height: 100%;
+        }
+        .test2{
+            padding-top: 40px;
+            width: 100%;
+            text-align: center;
+            text-decoration: none;
+            margin-right: 25px;
+        }
+        a{
+            color: black;
+            position: absolute;
+            z-index: 0;
+        }
+
+
+
+    </style>
+</head>
+<body>
+<div class="test">
+    <div class="container">
+        <caption><h2>List of Coach</h2></caption>
+        <table class="table table-dark table-striped">
+            <thead>
+            <tr>
+                <th>Tên Sách</th>
+                <th>Số lượng hiện tại</th>
+                <th>Giá tiền</th>
+                <th>Tình trạng</th>
+            </tr>
+            </thead>
+            <tbody id="list">
+            <tr>
+                <td>${coach.nameCoach}</td>
+                <td>${coach.bornYear}</td>
+                <td>${coach.address}</td>
+                <td>${coach.salary}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="test2" style="z-index: 1"><a href="Home.html">Quay lại trang chủ</a></div>
+</div>
+<script>
+    $(document).ready(function () {
+        let nameSeller = window.sessionStorage.getItem('NAME_KEY')
+        $.ajax({
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': window.sessionStorage.getItem('TOKEN_KEY')
+            },
+            url: 'http://localhost:8080/seller/listProduct/'+nameSeller,
+            success: function (data){
+                let content = ''
+                for (let i = 0; i < data.length; i++){
+                    content += `
+                      <tr>
+                <td>${data[i].name}</td>
+                <td>${data[i].quantity}</td>
+                <td>${data[i].price}</td>
+                <td>Còn hàng</td>
+            </tr>
+
+                    `
+
+                }
+                document.getElementById('list').innerHTML = content;
+            }
+
+
+        })
+    })
+
+</script>
+
+</body>
+</html>

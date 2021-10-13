@@ -61,10 +61,13 @@
                         <a class="nav-link" href="createProduct.html">Tạo sản phẩm</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="about.html">About Us</a>
+                        <a class="nav-link" href="listProductShop.html">Danh sách sản phẩm</a>
+                    </li>
+                    <li id="quanly" class="nav-item">
+                        <a class="nav-link" href="about.html">Doanh số bán hàng</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="contact.html">Contact Us</a>
+                        <a class="nav-link" href="contact.html">Đăng xuất</a>
                     </li>
                 </ul>
             </div>
@@ -248,16 +251,20 @@
 
 <script>
     $(document).ready(function () {
+        let role = window.sessionStorage.getItem("ROLE_KEY")
+
+            console.log(role)
+
         let Test1 = window.localStorage.getItem('listProduct');
         for(let i = 0; i < Test1.length; i++){
             console.log(Test1[i])
         }
-      let Test =  window.sessionStorage.getItem('ROLE_KEY')
-        let a = document.getElementById('Test')
-        if(Test == 'ROLE_USER'){
-            a.innerHTML = '';
-
-        }
+      // let Test =  window.sessionStorage.getItem('ROLE_KEY')
+      //   let a = document.getElementById('Dangxuat')
+      //   if(Test=== "ROLE_USER"){
+      //       a.innerHTML = '';
+      //
+      //   }
 
             $.ajax({
                 // headers: {
